@@ -9,11 +9,11 @@
   </pre>
 </p>
 
-<h3 align="center">💅 BACKEND REST API & BEAUTY MANAGEMENT SYSTEM 💆‍♀️</h3>
+<h3 align="center">💅 REST API & BEAUTY MANAGEMENT SYSTEM 💆‍♀️</h3>
 
 <p align="center">
   <a href="#-system-overview">
-    <img src="https://img.shields.io/badge/EXPLORE-HARMONY_SPA-pink?style=for-the-badge" alt="Explore">
+    <img src="https://img.shields.io/badge/EXPLORE-HARMONY_SPA-ff69b4?style=for-the-badge" alt="Explore">
   </a>
   <a href="#-architecture">
     <img src="https://img.shields.io/badge/ARCHITECTURE-SYSTEM-purple?style=for-the-badge" alt="Architecture">
@@ -26,7 +26,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/SENA_ADSO-FICHA_3315796-green?style=for-the-badge" alt="SENA">
   <img src="https://img.shields.io/badge/STATUS-IN_DEVELOPMENT-orange?style=for-the-badge" alt="Status">
-  <img src="https://img.shields.io/badge/PROJECT-BEAUTY_SPA-ff69b4?style=for-the-badge" alt="Project">
+  <img src="https://img.shields.io/badge/PROJECT-BEAUTY_SPA-ff1493?style=for-the-badge" alt="Project">
 </p>
 
 <p align="center">
@@ -42,13 +42,41 @@
 ## 🌸 SYSTEM OVERVIEW
 
 <p align="center">
-  <i>Una forma más inteligente de gestionar servicios de belleza, masajes y bienestar.</i>
+  <i>Plataforma inteligente para la gestión de servicios de belleza, estética y relajación.</i>
 </p>
 
-**HARMONY SPA** es un sistema backend robusto enfocado en la administración integral de centros de estética, spas y salud corporal. Facilita la programación de citas, gestión de terapeutas/esteticistas, catálogo de servicios de relajación y control de clientes con soporte de base de datos relacional MySQL.
+**HARMONY SPA** es un sistema backend desarrollado para la gestión integral de spas y centros de estética corporal. Proporciona una solución robusta para:
+
+* 📅 **Agendamiento y Citas:** Control de horarios para masajes, faciales y tratamientos estéticos.
+* 💆‍♀️ **Catálogo de Servicios:** Administración de tarifas, tiempos y categorías de bienestar.
+* 👥 **Gestión de Clientes y Terapeutas:** Asignación de especialistas y seguimiento de historial.
+* 💾 **Persistencia Relacional:** Conexión segura y optimizada con MySQL mediante SQLAlchemy.
 
 ---
 
 ## 🏛️ ARCHITECTURE
 
-El proyecto está estructurado con **Clean Architecture** (Arquitectura Limpia) para mantener un código limpio, modular y fácil de mantener
+El proyecto está diseñado bajo **Clean Architecture** (Arquitectura Limpia):
+
+```text
+Backend_SPA/
+├── 📂 app/
+│   ├── 📂 api/
+│   │   ├── 📂 v1/
+│   │   │   └── 📜 router.py
+│   │   └── 📜 health.py
+│   ├── 📂 core/
+│   │   └── 📜 config.py
+│   ├── 📂 domain/
+│   ├── 📂 infrastructure/
+│   │   └── 📂 database/
+│   │       ├── 📜 connection.py
+│   │       └── 📜 session.py
+│   ├── 📂 models/
+│   ├── 📂 repositories/
+│   ├── 📂 schemas/
+│   ├── 📂 services/
+│   └── 📜 main.py
+├── 📜 .env
+├── 📜 README.md
+└── 📜 requirements.txt
