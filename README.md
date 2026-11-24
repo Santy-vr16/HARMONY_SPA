@@ -80,3 +80,45 @@ Backend_SPA/
 ├── 📜 .env
 ├── 📜 README.md
 └── 📜 requirements.txt
+
+
+---
+
+## 🚀 PUESTA EN MARCHA
+
+```bash
+# 1. Entorno virtual e instalación
+python -m venv venv
+source venv/Scripts/activate        # Git Bash en Windows (Linux/Mac: source venv/bin/activate)
+pip install -r requirements.txt
+
+# 2. Configuración: copia .env.example a .env y edita DATABASE_URL y JWT_SECRET_KEY
+cp .env.example .env
+python -c "import secrets; print(secrets.token_urlsafe(48))"   # pega el resultado en JWT_SECRET_KEY
+
+# 3. Base de datos (MySQL): crea la base una sola vez
+#    CREATE DATABASE harmony_spa CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+alembic upgrade head
+
+# 4. Crear el SUPER_ADMIN (una sola vez)
+python -m scripts.create_super_admin
+
+# 5. Iniciar la API  ->  http://127.0.0.1:8000/docs
+uvicorn app.main:app --reload
+
+# 6. Pruebas automáticas (usan SQLite temporal, no tocan MySQL)
+python -m pytest -v
+```
+
+### Endpoints
+
+| Método | Ruta | Descripción |
+|--------|------|-------------|
+| POST | `/api/v1/auth/login` | Iniciar sesión (devuelve JWT) |
+| GET | `/api/v1/auth/me` | Perfil del usuario autenticado |
+| POST | `/api/v1/auth/logout` | Cerrar la sesión actual |
+| POST | `/api/v1/users` | Crear usuario (solo SUPER_ADMIN) |
+| GET | `/api/v1/users` | Listar usuarios (`?role=&is_active=&skip=&limit=`) |
+| GET | `/api/v1/users/{id}` | Consultar usuario |
+| PATCH | `/api/v1/users/{id}` | Actualizar datos |
+| PATCH | `/api/v1/users/{id}/status` | Activar / desactivar (revoca sesiones al desactivar) |
